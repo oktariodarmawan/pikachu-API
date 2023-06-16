@@ -1,0 +1,45 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Progate</title>
+</head>
+<body>
+  <h1>Mulai menggunakan AJAX</h1>
+
+  <button type="button" onclick="getPikachuData()">Fetch data</button>
+
+  <div class="result">
+
+  </div>
+
+
+
+  <script>
+function getPikachuData() {
+  fetch('https://pokeapi.co/api/v2/pokemon/pikachu')
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(data) {
+      var pokemonContainer = document.querySelector('.result');
+      pokemonContainer.innerHTML = `
+        <h2>${data.name}</h2>
+        <p>${data.id}</p>
+        <img src="${data.sprites.front_default}" alt="Pikachu">
+        
+      `;
+    })
+    .catch(function(error) {
+      console.log('Terjadi kesalahan:', error);
+    });
+}
+
+// Memanggil fungsi untuk mengambil data Pokemon Pikachu dan menampilkannya di halaman web
+
+
+
+
+    
+  </script>
+</body>
+</html>
